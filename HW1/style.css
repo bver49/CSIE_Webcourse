@@ -1,0 +1,200 @@
+/*Reset CSS Start*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+/*Reset CSS end*/
+
+/*Custom CSS*/
+html,
+body{
+	height:auto;
+	font-size:16px;
+	font-family:"微軟正黑體", "Microsoft JhengHei";
+	background-color:#718B8C;
+}
+
+div{
+	display:block;
+}
+
+table, th, td{
+    border: 1px solid black;
+    padding:5px;
+}
+
+td{
+	height:50px;
+	line-height:50px;
+}
+
+iframe{
+	display:inline-block;
+}
+
+#content{
+	height:auto;
+	display:block;
+	position:relative;
+}
+
+#left{
+	height:800px;
+	padding:0px 0px 10px 0px; 
+	position:relative;
+	background-color:#4C8487;
+	border-radius: 10px;
+}
+
+#right{
+	height:auto;
+	background-color:#718B8C;
+}
+
+#photo{
+	height:200px;
+	padding-top:20px;
+	margin-bottom:20px; 
+	background-color:black; 
+}
+
+#selfphoto{
+	border-radius:50%;
+	width:100px;
+	height:150px;
+	display:block;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+
+#main{
+	width:90%;
+	margin:0 auto;
+	padding:10px 20px 20px 20px;
+}
+
+.mail{
+	text-align:center;
+	width:100%;
+	background-color:rgba(250,250,250,0.6);
+	border-radius: 10px;
+	padding:15px;
+}
+
+#profile,#aboutme,#work{
+	width:100%;
+	padding:15px;
+	letter-spacing:3px; 
+	line-height:25px;
+	border-radius: 10px;
+	margin-bottom:10px; 
+}
+
+#aboutme{
+	margin-top:20px; 
+}
+
+#aboutme,#work{
+	background-color:rgba(250,250,250,0.6);
+}
+
+#selftable{
+	margin:0 auto;
+	text-align:center;
+	background-color:rgba(250,250,250,0.6);
+}
+
+#work{
+	height:50%;
+	text-align:center;
+}
+
+.title{
+	font-size:22px;
+	font-weight:bold;
+}
+
+.workphoto{
+	height:150px;
+	width:30%;
+	border-radius: 10px;
+	border: 1px solid #000000;
+}
+
+.workphoto:hover{
+	opacity:0.7;
+	width:31%;
+}
+
+#menu{
+	margin-top:25px; 
+	margin-bottom:10px;
+	text-align:center;
+}
+
+#menu ul{
+	width:100%;
+}
+
+#menu ul li{
+	line-height:50px;
+	height:50px;
+	padding:5px;
+}
+
+#menu ul li a{
+	text-decoration:none;
+	color:black;
+	 text-transform: uppercase;
+}
+
+#menu ul li a:hover{
+	color:#fff;
+}
+
+footer{
+	clear:both;
+	background-color:#83858C;
+	height:30px; 
+	line-height:30px;
+	font-size:13px;
+	text-align:center;
+}
