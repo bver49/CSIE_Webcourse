@@ -1,5 +1,31 @@
-var num = 1;
+/* 設置變數 */
+var totalphoto=21;      //相片總數
+var totalmusic=3;      //音樂總數
+var pos = 5;              //第一張照片由左至右數過來的位置
+
+
+/*  固定參數  */
+var fixpos=pos-1;
+var num = 1;                             //第一張照片編號
+var setfirst=totalphoto-fixpos+1;        //最左邊開始的照片編號
 var timer;
+
+
+function setid(){
+     document.pic.src="img/" + num + ".jpg";
+    var barpic = document.getElementsByClassName("choose");
+    for(i in barpic){
+        if(setfirst == num){
+            barpic[i].className+=" active";
+        }
+        barpic[i].id=setfirst;
+        barpic[i].src="img/" + setfirst + ".jpg";
+        setfirst++;
+        if (setfirst>totalphoto) {
+            setfirst=1;
+        };
+    }
+}
 
 function view(x) {
     var preview = document.getElementById("big");
@@ -17,7 +43,7 @@ function view(x) {
 function next() {
     event.preventDefault();
     num = num + 1;
-    if (num == 22) {
+    if (num > totalphoto) {
         num = 1;
     }
     document.pic.src = "img/" + num + ".jpg";
@@ -29,7 +55,7 @@ function prev() {
     event.preventDefault();
     num = num - 1;
     if (num == 0) {
-        num = 21;
+        num = totalphoto;
     }
     document.pic.src = "img/" + num + ".jpg";
     fixedbar(num);
@@ -45,7 +71,7 @@ function slideshow() {
     var second = document.getElementById("second").value;
     timer = window.setInterval(function() {
         num = num + 1;
-        if (num == 22) {
+        if (num > totalphoto) {
             num = 1;
         }
         fixedbar(num);
@@ -68,8 +94,8 @@ function showpic(x) {
     var choose = x.src;
     pic.src = choose;
     var id = parseInt(x.id) + num - 1;
-    if (id >= 22) {
-        id = id - 21;
+    if (id > totalphoto ) {
+        id = id - totalphoto;
     }
     num = id;
     fixedbar(id);
@@ -99,12 +125,15 @@ function down() {
 }
 
 function fixedbar(startnum) {
-    var start = startnum;
+    var start = startnum-fixpos;
+    if(start<=0){
+        start=start+totalphoto;
+    }
     var bar = document.getElementsByClassName("choose");
     for (i in bar) {
         bar[i].src = "img/" + start + ".jpg";
         start++;
-        if (start == 22) {
+        if (start > totalphoto) {
             start = 1;
         }
     }
@@ -112,14 +141,14 @@ function fixedbar(startnum) {
 };
 
 
-function player() {
-    var music = 2;
+function player() {    
+    var musicnum = 2;
     var audio = document.getElementById("player");
     audio.addEventListener("ended", function() {
-        audio.src = "res/" + music + ".mp3";
-        music++;
-        if (music > 3) {
-            music = 1;
+        audio.src = "res/" + musicnum + ".mp3";
+        musicnum++;
+        if (musicnum > totalmusic) {
+            musicnum = 1;
         }
         audio.play();
     });

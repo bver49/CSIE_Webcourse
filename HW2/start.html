@@ -8,7 +8,7 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 
-<body onload="player();">
+<body onload="player();setid();">
     <div id="header">
         <h1 id="title">幻燈片</h1>
         <audio controls autoplay id="player">
@@ -17,7 +17,7 @@
     </div>
     <div id="main">
         <div id="view">
-            <img src="img/1.jpg" id="show" name="pic">
+            <img id="show" name="pic">
             <div id="menu">
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -40,16 +40,18 @@
                 </ul>
             </div>
             <div id="bar">
-                <img src="img/1.jpg" class="choose active" onclick="showpic(this);" id="1">
-                <img src="img/2.jpg" class="choose" onclick="showpic(this);" id="2">
-                <img src="img/3.jpg" class="choose" onclick="showpic(this);" id="3">
-                <img src="img/4.jpg" class="choose" onclick="showpic(this);" id="4">
-                <img src="img/5.jpg" class="choose" onclick="showpic(this);" id="5">
-                <img src="img/6.jpg" class="choose" onclick="showpic(this);" id="6">
-                <img src="img/7.jpg" class="choose" onclick="showpic(this);" id="7">
-                <img src="img/8.jpg" class="choose" onclick="showpic(this);" id="8">
-                <img src="img/9.jpg" class="choose" onclick="showpic(this);" id="9">
-                <img src="img/10.jpg" class="choose" onclick="showpic(this);" id="10">
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+                <img  class="choose" onclick="showpic(this);" >
+
+                
             </div>
         </div>
     </div>

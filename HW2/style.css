@@ -132,6 +132,8 @@ html,body{
     top:20%;
     left:20%;
     z-index:99;
+    border-radius: 16px 16px 16px 16px;
+	border: 10px solid #f0f0f0;
 }
 
 /* 輪播 */
