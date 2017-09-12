@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1 class="text-center">我的信箱</h1>
+			<table class="table">
+				<tr>
+					<th>信件標題</th>
+					<th>寄件人</th>
+					<th>操作</th>
+				</tr>
+				<% @msg.each do |msg| %>
+					<tr>
+						<td>
+							<% if msg.status==0 %>
+								<span class="label label-danger">NEW</span>
+							<% end %>
+							<%= link_to msg.title,msg %>
+						</td>
+						<td><%= msg.sender %></td>
+						<td><%= link_to '刪除', msg_path(msg) ,:class => "btn btn-default", method: :delete, data: {confirm: "Are you sure?" } %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

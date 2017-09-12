@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+				<%= form_tag stores_path,:class =>'form-inline ', method: :get do %>
+					<span>搜尋:</span>
+    				<%= text_field_tag :title, params[:title],:class =>'form-control', placeholder: "標題" %>
+    			    <%= number_field_tag :rate, params[:rate], in: 0.0..10.0, step: 0.1,:class =>'form-control', placeholder: "最低分" %>
+    			    <%= select_tag :foodtype, "<option>中式</option><option>西式</option><option>宵夜</option><option>燒烤</option><option>早餐</option>".html_safe,:class =>'form-control'%>
+    			    <%= submit_tag "送出",:class => 'btn btn-primary' ,name: nil %>
+				<% end %>
+		</div>
+	</div>
+	<% @store.each_slice(3) do |stores| %>
+		<div class="row">
+			<% stores.each do |store| %>
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<%= link_to image_tag(store.image.url(:medium)), store %>
+						<div class="caption">
+ 							<h1 class="text-center"><%= link_to store.name,store %></h1>
+ 							<% if store.custom_rates.count != 0 %>
+	 							<% if store.rate <= 3 %>
+	 								<p class="label label-success">分數: <%= store.rate %></p>
+	 							<% elsif store.rate > 3 && store.rate <=7 %> 
+	 								<p class="label label-warning">分數: <%= store.rate %></p>
+								<% else %> 
+	 								<p class="label label-danger">分數: <%= store.rate %></p>
+	 							<% end %>
+	 						<% else %>
+	 							<p class="label label-default">尚無評分</p>
+	 						<% end %>
+	 						<p class="label label-info"><%= store.place %></p>
+	 						<p class="label label-primary"><%= store.view_count %> 瀏覽</p>
+	 						<p class="label label-info"><%= store.comments.count %>留言</p>
+ 						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

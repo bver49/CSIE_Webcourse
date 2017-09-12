@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iExchange</title>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'layouts/navbar' %>
+<div class="container">
+  <div class="col-md-12">
+<% flash.each do |key, value| %>
+  <% alert_class = case key
+                   when :notice then "success"
+                   when :alert then "danger"
+                   else "success"
+                   end %>
+  <%= content_tag :div, class: "alert alert-#{alert_class}" do %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= value %>
+  <% end %>
+<% end %>
+  </div>
+</div>
+
+<%= yield %>
+<div style="display:block; height:300px;"></div>
+<%= render 'layouts/footer' %>
+
+</body>
+</html>

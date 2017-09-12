@@ -1,0 +1,15 @@
+<%= form_for @store do |f| %>
+	<%= f.label :name, '店名' %>
+	<%= f.text_field :name , :class =>"form-control" %><br>
+	<%= f.label "地區" %><br>
+	<%= f.select :place, %w[臺北 新北 基隆 桃園 新竹 台中 苗栗 嘉義 彰化 臺南 高雄 屏東 台東 花蓮 宜蘭 澎湖] , :class =>"form-control" %><br><br>
+	<%= f.label :address, '地址' %>
+	<%= f.text_field :address , :class =>"form-control" %><br>
+	<%= f.label "類型" %><br>
+	<%= f.select :foodtype, %w[中式 西式 宵夜 燒烤 早餐] , :class =>"form-control" %><br><br>
+    <%= f.label "圖片" %>
+    <%= f.file_field :image , :class =>"form-control" %><br>
+	<%= f.label :description, '介紹' %>
+	<%= f.text_area :description , :class =>"form-control" %><br>
+  	<%= f.submit '建立', :class =>"btn btn-default" %>
+<% end %>

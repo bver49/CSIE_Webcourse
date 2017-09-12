@@ -1,0 +1,80 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-center">我的貼文</h2><br>
+      <table class="table table-bordered " >
+        <tr>
+          <th>標題</th>
+          <th>回應</th>
+          <th>狀態</th>
+          <th>操作</th>
+        </tr>
+        <% @post=@user.own_post(current_user.id) %>
+        <% if @post.count == 0 %>
+          <tr>
+            <td class="text-center" colspan="4" >目前沒有貼文</td>
+          </tr>
+        <% end %>
+
+        <% @post.each do |p| %>
+          <tr>
+            <td><%= link_to p.title , p %></td>
+            <td><%= p.comments.count %></td>
+            <% if p.status == 1 %>
+              <td>開啓</td>
+              <td><%= link_to '關閉', close_post_path(p) ,method: :put %>&emsp;
+                  <%= link_to '刪除', post_path(p), method: :delete, data: {confirm: "Are you sure?" } %>&emsp;
+                  <%= link_to '編輯', edit_post_path(p) %>&emsp;
+                  <%= link_to '完成', finish_post_path(p),method: :put  %></td>
+            <% elsif p.status == 2 %>
+              <td>關閉</td>   
+              <td><%= link_to '開啓', open_post_path(p) ,method: :put %>&emsp;
+                  <%= link_to '刪除', post_path(p), method: :delete, data: {confirm: "Are you sure?" } %>&emsp;
+                  <%= link_to '編輯', edit_post_path(p) %></td>
+            <% else %>
+              <% if p.status == 3 %>
+                <td>封鎖</td>   
+              <% else %>
+                <td>交換完成</td> 
+              <% end %>
+              <td><%= link_to '刪除', post_path(p), method: :delete, data: {confirm: "Are you sure?" } %>&emsp;
+              <%= link_to '編輯', edit_post_path(p) %></td>
+            <% end %>  
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h2 class="text-center">編輯帳戶</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),class: 'form-horizontal', html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div><%= f.label '姓名' %><br />
+          <%= f.text_field :name, autofocus: true , :class =>"form-control"%></div><br />
+  
+          <div><%= f.label 'E-mail' %><br />
+          <%= f.email_field :email, autofocus: true , :class =>"form-control"%></div><br />
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div><%= f.label '新密碼' %> <i>(如果沒有要變更密碼請留白)</i><br />
+          <%= f.password_field :password, autocomplete: "off" , :class =>"form-control" %></div><br />
+
+          <div><%= f.label '確認新密碼' %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" , :class =>"form-control" %></div><br />
+
+          <div><%= f.label '目前的密碼' %> <i>(更動資料時請輸入目前的密碼)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" , :class =>"form-control" %></div><br />
+
+          <div><%= f.submit "更新",:class =>'btn btn-default'%></div><br />
+        <% end %>
+
+      <p>不想使用了嗎?</p><%= button_to "刪除帳戶", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,:class =>'btn btn-default' %><br />
+
+      <%= link_to "返回", :back ,:class =>'btn btn-default' %>
+    </div>
+  </div>
+</div>

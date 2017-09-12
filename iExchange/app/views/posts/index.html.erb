@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="jumbotron">
+  			<h1>iExchange</h1><br>
+  			<p>交換愛 / 愛交換</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div id="search_field">
+				<h1 class="post_title">搜尋:&emsp;</h1>
+				<%= form_tag posts_path,:class =>'search_form' , method: :get do %>
+    				<%= text_field_tag :search, params[:search], placeholder: "Search..." %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<ol class="breadcrumb">
+				<li><%= link_to '新北',posts_path(:place => '新北') %></li>
+  				<li><%= link_to '臺北',posts_path(:place => '臺北') %></li>
+  				<li><%= link_to '桃園',posts_path(:place => '桃園') %></li>
+  				<li><%= link_to '台中',posts_path(:place => '台中') %></li>
+  				<li><%= link_to '嘉義',posts_path(:place => '嘉義') %></li>
+  				<li><%= link_to '台南',posts_path(:place => '台南') %></li>
+  				<li><%= link_to '高雄',posts_path(:place => '高雄') %></li>
+  				<li><%= link_to '澎湖',posts_path(:place => '澎湖') %></li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<% @post.each_slice(3) do |post| %>
+		<div class="row">
+			<% post.each do |post| %>
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<%= link_to image_tag(post.image.url(:medium)), post %>
+						<div class="caption">
+ 							<h1 class="post_title"><%= link_to post.title,post %></h1>
+							<p><%= post.itemtype %></p>           			
+            			</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+

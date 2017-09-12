@@ -1,0 +1,51 @@
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="content" >
+                  <%= image_tag @post.image.url(:medium) %>
+                  <p>由<%= @post.user.name %> 發表</p>
+                  <div class="btn-group" role="group">
+                      <% if @post.user == current_user %>
+                        <%= link_to '刪除', post_path,:class => "btn btn-default", method: :delete, data: {confirm: "Are you sure?" } %>
+                        <%= link_to '編輯', edit_post_path ,:class => "btn btn-default" %>
+                        <% if @post.status == 1 %>
+                            <%= link_to '關閉', close_post_path(@post) ,method: :put, :class => "btn btn-default" %>
+                        <% else %>
+                            <%= link_to '開啓', open_post_path(@post) ,method: :put, :class => "btn btn-default" %>
+                        <% end %>
+                      <% else %>
+                            <%= link_to '寄信給作者', new_msg_path(:receive => @post.user.email),:class => "btn btn-default"  %> 
+                      <% end %>
+                      <%= link_to '返回', root_path , :class => "btn btn-default" %>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h1><%= @post.title %></h1>
+                <p class="label label-default"><%= @post.place %></p>
+                <p class="label label-primary"><%= @post.itemtype %></p><br><br>
+                <p><%= @post.description %></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="comments_title"><%= @post.comments.count %> 則留言</h3>
+                <div id="comments">
+                    <%= render :partial => @post.comments %>
+                </div>
+                <% if user_signed_in? %>
+                  <%= simple_form_for [@post, Comment.new]  do |f| %>
+                    <div class="field">
+                        <%= f.text_area :body, class: "form-control" %>
+                    </div>
+                    <br>
+                    <%= f.submit "Add Comment", class: "btn btn-primary" %>
+                  <% end %>
+                <% else %>
+                    <p>請先<%= link_to '登入',new_user_session_path %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

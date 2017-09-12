@@ -1,0 +1,11 @@
+== README
+
+讓大家發表記錄美食地圖的平台、他人可以給予評分及留言
+
+ruby 2.1.1
+
+rails 4.2.1
+
+使用 Geocoder 將地址轉為經緯度
+
+使用 Gmaps4rails 處理 google map顯示 

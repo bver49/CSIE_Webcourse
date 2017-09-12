@@ -1,0 +1,2 @@
+module CustomRatesHelper
+end

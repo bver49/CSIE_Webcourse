@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to('iExchange', root_path,:class => "navbar-brand") %>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to '發表文章',new_post_path %></li>
+                <% if user_signed_in? %>
+                    <% if current_user.id==1 %>
+                        <li><%= link_to '管理員後台', admin_posts_path %></li>
+                    <% end %>
+                    <li><%= link_to '我的帳戶', edit_user_registration_path  %></li>
+                    <li><%= link_to '寄信', new_msg_path  %></li>
+                    <li>
+                        <% if (check_msg > 0) %>
+                            <%= link_to msgs_path do %>
+                                收件匣 <span class="badge"><%= check_msg %></span>
+                            <% end %>                        
+                        <% else %>
+                            <%= link_to '收件匣' ,msgs_path %>
+                        <% end %>
+                    </li>
+                    <li><%= link_to '登出', destroy_user_session_path , :method => :delete %></li>
+                <% else %>
+                    <li><%= link_to '註冊',new_user_registration_path  %></li>
+                    <li><%= link_to '登入',new_user_session_path %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>

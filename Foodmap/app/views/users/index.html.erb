@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<h1 class="text-center">您發的文</h1>
+			<table class="table text-center table-bordered">
+				<tr>
+					<th>名稱</th>
+					<th>評分</th>
+					<th>留言數</th>
+					<th>操作</th>
+				</tr>
+				<% @store.each do |store| %>
+					<tr>
+						<td><%= store.name %></td>
+						<td><%=store.rate %></td>
+						<td><%=store.comments.count %></td>
+						<td>
+							<%= link_to '編輯', edit_store_path(store) %>
+							<%= link_to '刪除', store_path(store),method: :delete %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+
+		<div class="col-md-6">
+			<h1 class="text-center">會員資料</h1>
+			<%= form_for @user do |f| %>
+			  <%= f.label :name, '用戶名' %>
+			  <%= f.text_field :name , :class =>"form-control" %><br>
+			  <%= f.label :email, '信箱' %>
+			  <%= f.text_field :email , :class =>"form-control" %><br>
+			  <%= f.label :password, '新密碼' %>
+			  <%= f.password_field :password,:class =>"form-control" %><br>
+			  <%= f.label :password_confirmation, '確認密碼' %>
+			  <%= f.password_field :password_confirmation, :class =>"form-control" %><br>
+			  <%= f.submit '更新', :class =>"btn btn-default" %>
+			<% end %>
+		</div>
+	</div>
+</div>

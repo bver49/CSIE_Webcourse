@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">註冊</h1><br />
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      
+        <%= devise_error_messages! %>
+
+        <div><%= f.label 'Email' %><br />
+        <%= f.email_field :email, autofocus: true  , :class =>"form-control" %></div><br />
+
+        <div><%= f.label '姓名' %><br />
+        <%= f.text_field :name, autofocus: true , :class =>"form-control" %></div><br />
+
+        <div><%= f.label '密碼' %> <% if @validatable %><i>(<%= @minimum_password_length %>個字元以上)</i><% end %><br />
+        <%= f.password_field :password, autocomplete: "off" , :class =>"form-control"  %></div><br />
+
+        <div><%= f.label '確認密碼' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" , :class =>"form-control" %></div><br />
+        <div><%= f.submit "註冊" ,:class =>'btn btn-default' %></div><br />
+      <% end %>
+      <h5>已經有帳號了?&emsp;&emsp;&emsp;馬上<%= link_to "登入", new_session_path(resource_name) %></h5>
+    </div>
+  </div>
+</div>

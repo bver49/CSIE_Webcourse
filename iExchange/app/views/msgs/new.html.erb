@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<%= form_for(@msg,class: 'form-horizontal') do |f| %>
+				<p>
+					<%= f.label "收件人" %>
+					<%= f.text_field :receive , :class =>"form-control" %>
+				</p><br>	
+				<p>
+					<%= f.label "標題" %>
+					<%= f.text_field :title , :class =>"form-control" %>
+				</p><br>
+				<p>
+					<%= f.label "內容" %>
+					<%= f.text_area :body , :class =>"form-control" %>
+				</p><br>
+
+				<p>
+					<%= f.submit '傳送' , :class => 'btn btn-default right' %>
+				</p>
+			<% end %>
+		</div>
+	</div>
+</div>

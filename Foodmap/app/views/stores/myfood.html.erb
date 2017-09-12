@@ -1,0 +1,27 @@
+<div class="container">
+	<% @store.each_slice(3) do |stores| %>
+		<div class="row">
+			<% stores.each do |store| %>
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<%= link_to image_tag(store.image.url(:medium)), store %>
+						<div class="caption">
+ 							<h1><%= link_to store.name,store %></h1>
+ 							<% if store.custom_rates.count != 0 %>
+	 							<% if store.rate <= 3 %>
+	 								<p class="label label-success">分數: <%= store.rate %></p>
+	 							<% elsif store.rate > 3 && store.rate <=7 %> 
+	 								<p class="label label-warning">分數: <%= store.rate %></p>
+								<% else %> 
+	 								<p class="label label-danger">分數: <%= store.rate %></p>
+	 							<% end %>
+	 						<% else %>
+	 							<p class="label label-default">尚無評分</p>
+	 						<% end %>
+ 						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

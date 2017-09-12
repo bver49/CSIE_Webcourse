@@ -1,0 +1,25 @@
+<%= form_for(@post,class: 'form-horizontal') do |f| %>
+	<p>
+		<%= f.label "標題" %>
+		<%= f.text_field :title , :class =>"form-control" %>
+	</p><br>
+	<p>
+		<%= f.label "描述" %>
+		<%= f.text_area :description , :class =>"form-control" %>
+	</p><br>	
+	<p>
+		<%= f.label "上傳圖片" %>
+		<%= f.file_field :image , :class =>"form-control" %>
+	</p><br>
+	<p>
+		<%= f.label "地區" %>&emsp;:&emsp;
+		<%= f.select :place, %w[臺北 桃園 台中 台南 高雄 澎湖 金門 新北 宜蘭 花蓮 台東] , :class =>"form-control" %>
+	</p><br>	
+	<p>
+		<%= f.label "交換的類別" %>&emsp;:&emsp;
+		<%= f.select :itemtype, %w[服務 技能 物品] , :class =>"form-control" %>
+	</p><br>
+	<p>
+		<%= f.submit '發表' , :class => 'btn btn-default right' %>
+	</p>
+<% end %>
